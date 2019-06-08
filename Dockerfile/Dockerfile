@@ -1,4 +1,7 @@
 FROM docker.io/busybox
 MAINTAINER jikun.zhang <jikun.zhang>
-ADD . ./
-ENTRYPOINT ["./PrometheusAlert"]
+RUN mkdir /app
+ADD . /app/
+WORKDIR /app
+RUN chmod 755 /app/*
+ENTRYPOINT ["/app/PrometheusAlert"]
